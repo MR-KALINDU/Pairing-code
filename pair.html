@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IZUMI pair</title>
+  <title>pair with me</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
@@ -12,10 +12,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-image: url("https://i.ibb.co/k2Mhkmy/IMG-1705287312748.png"); /* Set the background image */
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      background: linear-gradient(to bottom, #ffffff, #ebebeb);
       font-family: Arial, sans-serif;
     }
 
@@ -27,11 +24,11 @@
 
     .box {
       width: 300px;
-      height: 330px;
+      height: 320px;
       padding: 20px;
       position: relative;
       text-align: center;
-      background-color: rgba(255,255,255,0.5);
+      background-color: #fff;
       border-radius: 10px;
       transform: perspective(1000px) rotateY(0deg);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
@@ -67,25 +64,25 @@
       border-radius: 0.8rem 0 0 0.8rem;
       background: #e8e8e8;
       box-shadow: inset 13px 13px 10px #dcdcdc, inset -13px -13px 10px #f4f4f4;
-      width: 89%;
+      width: 100%;
       flex-basis: 75%;
       padding: 1rem;
       border: none;
-      border-left: 2px solid #ff9d9d;
+      border-left: 2px solid #4998FF;
       color: #5e5e5e;
       transition: all 0.2s ease-in-out;
     }
 
     .input-container input:focus {
-      border-left: 2px solid #ff9d9d;
+      border-left: 2px solid #4998FF;
       outline: none;
-      box-shadow: inset 13px 13px 10px #ffe1e1, inset -13px -13px 10px #f4f4f4;
+      box-shadow: inset 13px 13px 10px #BFF0FA, inset -13px -13px 10px #f4f4f4;
     }
 
     .input-container button {
       flex-basis: 25%;
       padding: 1rem;
-      background: linear-gradient(135deg, #ffe1e1 0%, #ff9d9d 100%);
+      background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
       font-weight: 900;
       letter-spacing: 0.3rem;
       text-transform: uppercase;
@@ -97,7 +94,7 @@
     }
 
     .input-container button:hover {
-      background: linear-gradient(135deg, #A8E4A0 0%, #32CD32 100%);
+      background: linear-gradient(135deg, #BFF0FA 0%, #4998ffc4 100%);
     }
 
     @media (max-width: 500px) {
@@ -129,13 +126,13 @@
           <p>
             <h3 class="centered-text">Link with phone number</h3>
             <br>
-            <h6>Enter your number with country code.</h6>
+            <h6>Enter your number with a country code.</h6>
             <div class="input-container">
-                <input placeholder="+94766943622" type="number" id="number" placeholder="enter your phone number with country code" name="">
-                <button id="submit">enter</button>
+                <input placeholder="917025994178" type="number" id="number" placeholder="enter your phone number with a country code" name="">
+                <button id="submit">submit</button>
               </div>
              
-              <a id="waiting-message" class="centered-text" style="display: none;">in process...</a>
+              <a id="waiting-message" class="centered-text" style="display: none;">Please wait...</a>
               <br>
               <br>
               <main id="pair"></main>
@@ -170,9 +167,9 @@
     b.addEventListener("click", async (e) => {
       e.preventDefault();
       if (!c.value) {
-        a.innerHTML = '<a style="color:black;font-weight:bold">Enter your whatsapp number with country code.</a><br><br>';
+        a.innerHTML = '<a style="color:black;font-weight:bold">enter your WhatsApp number with a country code</a><br><br>';
       } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color:black;font-weight:bold">Invalid number format</a><br><br>';
+        a.innerHTML = '<a style="color:black;font-weight:bold">invalid number format</a><br><br>';
       } else {
         const bc = c.value.replace(/[^0-9]/g, "");
         let bb = "";
@@ -191,7 +188,7 @@
         c.type = "text";
         c.value = "+" + bb;
         c.style = "color:black;font-size:20px";
-        a.innerHTML = '<a style="color:black;font-weight:bold">Please wait for some time</a><br><br>';
+        a.innerHTML = '<a style="color:black;font-weight:bold">Please wait...</a><br><br>';
         let { data } = await axios(`/code?number=${bc}`);
         let code = data.code || "Service Unavailable";
         a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:black;font-weight:bold">' + code + '</span></font><br><br><br>';
